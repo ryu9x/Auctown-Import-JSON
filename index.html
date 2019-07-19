@@ -51,7 +51,7 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         
         <button type="button" class="btn btn-primary">
-        	Fetch Dataa
+        	Fetch Data
     	</button>
         
       </div>
@@ -62,9 +62,15 @@
 </div>
 
 <script type="text/javascript">
-	var fetchJSONData = new Object();
+var fetchJSONData = new Object();
 function updateJSONData(){
-fetchJSONData = JSON.parse($("#json-data-text").val());
-console.log(fetchJSONData);
+	try {
+		fetchJSONData = JSON.parse($("#json-data-text").val());
+	}
+	catch(err) {
+	  fetchJSONData = new Object();
+	}
+	
+	console.log(fetchJSONData);
 }
 </script>
