@@ -93,6 +93,7 @@ var fetchJSONData = new Object();
 function updateJSONData(){
 	try {
 		fetchJSONData = JSON.parse($("#json-data-text").val());
+		fetchData();
 	}
 	catch(err) {
 	  fetchJSONData = new Object();
@@ -101,6 +102,6 @@ function updateJSONData(){
 }
 
 function fetchData(){
-	$("#title").val(fetchJSONData.pageModule.title);
+	$("#txtTitle").val(fetchJSONData.pageModule.title);
 }
 </script>
