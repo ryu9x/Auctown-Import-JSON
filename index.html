@@ -70,6 +70,12 @@
 			    未使用に近い (Gần như không sử dụng)
 			  </label>
 			</div>
+			<div class="form-group">
+			<label for="lisShippingForm">Shipping template</label>
+			<div id="lisShippingForm">
+				
+			</div>
+			</div>
 	  	</div>
 		 
       
@@ -89,6 +95,16 @@
 
 <script type="text/javascript">
 var fetchJSONData = new Object();
+
+$(document).ready(function() {
+	init();
+
+});
+
+function init() {
+	console.log("khoi tao");
+	$("#lisShippingForm").html($("#ship_name").html());
+}
 
 function updateJSONData(){
 	try {
