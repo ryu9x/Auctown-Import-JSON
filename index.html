@@ -58,6 +58,8 @@
 				<input type="input" class="form-control" id="txtTitleTrans">
 			</div>
 			<div class="form-group">
+				<label for="radNewUnUse">Title Translate</label>
+
 				<div class="form-check">
 				  <input class="form-check-input" type="radio" name="goodsStatusRadio" id="radNewUnUse" value="new" checked>
 				  <label class="form-check-label" for="radNewUnUse">
@@ -124,7 +126,7 @@ function fetchData(){
 	$("#title").val(fetchJSONData.titleModule.subject);
 
 	//tinh trang san pham
-	$("input[type='radio']").val($("input[name='goodsStatusRadio']:checked").val());
+	$("input[type='radio'][name='status']").val([$("input[name='goodsStatusRadio']:checked").val().toString()]);
 
 	//Mo ta
 	$.get(fetchJSONData.descriptionModule.descriptionUrl,function(responseHTML){
@@ -164,7 +166,8 @@ function fetchData(){
 	//giam gia khi dang lai
 	$("#change_price_ratio_resubmit").val([0]);//khong giam gia
 
-	$("#ship_name").val($("#lisShippingForm>#ship_name").val());$("#ship_name").change();
+	$("#ship_name").val($("#lisShippingForm>#ship_name").val());
+	$("#ship_name").change();
 
 
 }  
