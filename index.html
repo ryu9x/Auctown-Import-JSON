@@ -57,18 +57,19 @@
 				<label for="txtTitleTrans">Title Translate</label>
 				<input type="input" class="form-control" id="txtTitleTrans">
 			</div>
-
-			<div class="form-check">
-			  <input class="form-check-input" type="radio" name="goodsStatusRadio" id="radNewUnUse" value="new" checked>
-			  <label class="form-check-label" for="radNewUnUse">
-			    新品、未使用 (Hàng mới, chưa sử dụng)
-			  </label>
-			</div>
-			<div class="form-check">
-			  <input class="form-check-input" type="radio" name="goodsStatusRadio" id="radUnUse" value="used10">
-			  <label class="form-check-label" for="exampleRadios2">
-			    未使用に近い (Gần như không sử dụng)
-			  </label>
+			<div class="form-group">
+				<div class="form-check">
+				  <input class="form-check-input" type="radio" name="goodsStatusRadio" id="radNewUnUse" value="new" checked>
+				  <label class="form-check-label" for="radNewUnUse">
+				    新品、未使用 (Hàng mới, chưa sử dụng)
+				  </label>
+				</div>
+				<div class="form-check">
+				  <input class="form-check-input" type="radio" name="goodsStatusRadio" id="radUnUse" value="used10">
+				  <label class="form-check-label" for="exampleRadios2">
+				    未使用に近い (Gần như không sử dụng)
+				  </label>
+				</div>
 			</div>
 			<div class="form-group">
 			<label for="lisShippingForm">Shipping template</label>
@@ -123,7 +124,7 @@ function fetchData(){
 	$("#title").val(fetchJSONData.titleModule.subject);
 
 	//tinh trang san pham
-	$("input[type='radio']").val(["new"]);
+	$("input[type='radio']").val($("input[name='goodsStatusRadio']:checked").val());
 
 	//Mo ta
 	$.get(fetchJSONData.descriptionModule.descriptionUrl,function(responseHTML){
@@ -163,7 +164,7 @@ function fetchData(){
 	//giam gia khi dang lai
 	$("#change_price_ratio_resubmit").val([0]);//khong giam gia
 
-	$("#ship_name").val([131583]);$("#ship_name").change();
+	$("#ship_name").val($("#lisShippingForm>#ship_name").val());$("#ship_name").change();
 
 
 }  
