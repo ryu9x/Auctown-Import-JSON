@@ -45,40 +45,59 @@
 
       
   		<div class="modal-body">
-  			<div class="form-group">
-  				<label for="json-data-text">Json Data</label>	
-		    <textarea class="form-control" id="json-data-text" onchange="updateJSONData()" ></textarea>
-  			</div>
-  			<div class="form-group">
-			<label for="txtTitle">Title</label>
-			<input type="input" class="form-control" id="txtTitle">
-			</div>
-			<div class="form-group">
-				<label for="txtTitleTrans">Title Translate</label>
-				<input type="input" class="form-control" id="txtTitleTrans">
-			</div>
-			<div class="form-group">
-				<label for="radNewUnUse">Title Translate</label>
+  			<ul class="nav nav-pills">
+				<li class="active">
+					<a  href="#tab-data" data-toggle="tab">JSON</a>
+				</li>
+				<li><a href="#tab-template" data-toggle="tab">Template</a>
+				</li>
+			</ul>
+			<!-- tab 1 -->
+			<div class="tab-content clearfix">
+				<div class="card-body tab-pane active" id="tab-data">
+				<div class="form-group">
+	  				<label for="json-data-text">Json Data</label>	
+			    <textarea class="form-control" id="json-data-text" onchange="updateJSONData()" ></textarea>
+	  			</div>
+	  			<div class="form-group">
+				<label for="txtTitle">Title</label>
+				<input type="input" class="form-control" id="txtTitle">
+				</div>
+				<div class="form-group">
+					<label for="txtTitleTrans">Title Translate</label>
+					<input type="input" class="form-control" id="txtTitleTrans">
+				</div>
+				<div class="form-group">
+					<label for="radNewUnUse">Title Translate</label>
 
-				<div class="form-check">
-				  <input class="form-check-input" type="radio" name="goodsStatusRadio" id="radNewUnUse" value="new" checked>
-				  <label class="form-check-label" for="radNewUnUse">
-				    新品、未使用 (Hàng mới, chưa sử dụng)
-				  </label>
+					<div class="form-check">
+					  <input class="form-check-input" type="radio" name="goodsStatusRadio" id="radNewUnUse" value="new" checked>
+					  <label class="form-check-label" for="radNewUnUse">
+					    新品、未使用 (Hàng mới, chưa sử dụng)
+					  </label>
+					</div>
+					<div class="form-check">
+					  <input class="form-check-input" type="radio" name="goodsStatusRadio" id="radUnUse" value="used10">
+					  <label class="form-check-label" for="exampleRadios2">
+					    未使用に近い (Gần như không sử dụng)
+					  </label>
+					</div>
 				</div>
-				<div class="form-check">
-				  <input class="form-check-input" type="radio" name="goodsStatusRadio" id="radUnUse" value="used10">
-				  <label class="form-check-label" for="exampleRadios2">
-				    未使用に近い (Gần như không sử dụng)
-				  </label>
+				<div class="form-group">
+				<label for="lisShippingForm">Shipping template</label>
+				<div id="lisShippingForm">
+					
+				</div>
+				</div>
 				</div>
 			</div>
-			<div class="form-group">
-			<label for="lisShippingForm">Shipping template</label>
-			<div id="lisShippingForm">
-				
+			<!-- tab 2 -->
+			<div class="tab-content clearfix">
+				<div class="card-body tab-pane active" id="tab-template">
+				</div>
 			</div>
-			</div>
+			
+  			
 	  	</div>
 		 
       
@@ -141,6 +160,9 @@ function fetchData(){
 
 	//auction type
 	$("#auctionPrice").click();
+
+	//price
+	$("#start_price").val(fetchJSONData.priceModule.maxAmount.value * 2);
 
 	//so luong
 	$("#quantity").val(1);
