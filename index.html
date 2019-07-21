@@ -102,8 +102,7 @@ $(document).ready(function() {
 });
 
 function init() {
-	console.log("khoi tao");
-	$("#lisShippingForm").html($("#ship_name").html());
+	$("#lisShippingForm").html($("#ship_name")[0].outerHTML);
 }
 
 function updateJSONData(){
