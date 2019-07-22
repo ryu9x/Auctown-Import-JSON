@@ -90,4 +90,3 @@ function loadSummernote(){
 
  // $("#summernote_desc").summernote();
 }
-alert("E")
