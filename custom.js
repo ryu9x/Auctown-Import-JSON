@@ -1,4 +1,5 @@
 var fetchJSONData = new Object();
+var $ = window.jQuery;
 
 $(document).ready(function() {
 	init();
