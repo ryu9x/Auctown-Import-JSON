@@ -153,9 +153,10 @@ function fetchData(){
 	//Mo ta
 	$.get(fetchJSONData.descriptionModule.descriptionUrl,function(responseHTML){
 		var customDesc = "";
-		var responseHTMLWithoutImage = $(responseHTML).find("img").remove().end();
+		var responseHTMLWithoutImage = $("<div>"+responseHTML+"</div>");
+		responseHTMLWithoutImage.find("img").remove();
 
-		customDesc += $('#summernote_temp_desc').val().replace("#desc-heading",fetchJSONData.titleModule.subject).replace("#desc-body",responseHTMLWithoutImage).replace(".shipping-schedule",$("#summernote_temp_shipping_time").val());
+		customDesc += $('#summernote_temp_desc').val().replace("#desc-heading",fetchJSONData.titleModule.subject).replace("#desc-body",responseHTMLWithoutImage.html()).replace(".shipping-schedule",$("#summernote_temp_shipping_time").val());
 
 		customDesc += $('#summernote_temp_shipping').val().replace(".shipping-schedule",$("#summernote_temp_shipping_time").val());
 		customDesc += $('#summernote_temp_payment').val();
