@@ -29,7 +29,7 @@ function fetchData(){
 
 	//Tieu de
 	$("#txtTitle").val(fetchJSONData.titleModule.subject);
-	$("#title").val(fetchJSONData.titleModule.subject);
+	$("#title").val($("#txtTitleTrans").val());
 
 	//tinh trang san pham
 	$("input[type='radio'][name='status']").val([$("input[name='goodsStatusRadio']:checked").val().toString()]);
