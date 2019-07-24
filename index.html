@@ -128,7 +128,23 @@ function init() {
 function updateJSONData(){
 	try {
 		fetchJSONData = JSON.parse($("#json-data-text").val());
-		fetchData();
+		$("#txtTitle").val(fetchJSONData.titleModule.subject);
+		//Mo ta
+		$.get(fetchJSONData.descriptionModule.descriptionUrl,function(responseHTML){
+			var customDesc = "";
+
+
+			customDesc += $('#summernote_temp_desc').val().replace("#desc-heading",fetchJSONData.titleModule.subject).replace("#desc-body",responseHTML).replace(".shipping-schedule",$("#summernote_temp_shipping_time").val());
+
+			customDesc += $('#summernote_temp_shipping').val().replace(".shipping-schedule",$("#summernote_temp_shipping_time").val());
+			customDesc += $('#summernote_temp_payment').val();
+			customDesc += $('#summernote_temp_note').val();
+			$("#summernote_desc").val(customDesc);
+			
+
+			
+		});
+
 	}
 	catch(err) {
 	  fetchJSONData = new Object();
@@ -136,31 +152,18 @@ function updateJSONData(){
 	console.log(fetchJSONData);
 }
 
+
+
 function fetchData(){
 
 	//Tieu de
-	$("#txtTitle").val(fetchJSONData.titleModule.subject);
-	$("#title").val(fetchJSONData.titleModule.subject);
+	$("#title").val($("#txtTitle").val();
 
 	//tinh trang san pham
 	$("input[type='radio'][name='status']").val([$("input[name='goodsStatusRadio']:checked").val().toString()]);
 
-	//Mo ta
-	$.get(fetchJSONData.descriptionModule.descriptionUrl,function(responseHTML){
-		var customDesc = "";
-
-
-		customDesc += $('#summernote_temp_desc').val().replace("#desc-heading",fetchJSONData.titleModule.subject).replace("#desc-body",responseHTML).replace(".shipping-schedule",$("#summernote_temp_shipping_time").val());
-
-		customDesc += $('#summernote_temp_shipping').val().replace(".shipping-schedule",$("#summernote_temp_shipping_time").val());
-		customDesc += $('#summernote_temp_payment').val();
-		customDesc += $('#summernote_temp_note').val();
-		$("#summernote_desc").val(customDesc);
-		
-
-		$("#easyWebEditor_description_copy_iframe").contents().find("body").html(customDesc);
-	});
-
+	//mo ta
+	$("#easyWebEditor_description_copy_iframe").contents().find("body").html($("#summernote_desc").val();
 	//anh
 	for (var i = 1; i <=10 ; i++) {
 		$("#registImage"+i).attr("src",fetchJSONData.imageModule.imagePathList[i]);
