@@ -163,7 +163,7 @@ function fetchData(){
 	$("input[type='radio'][name='status']").val([$("input[name='goodsStatusRadio']:checked").val().toString()]);
 
 	//mo ta
-	$("#easyWebEditor_description_copy_iframe").contents().find("body").html($("#summernote_desc").val();
+	$("#easyWebEditor_description_copy_iframe").contents().find("body").html($("#summernote_desc").val());
 	//anh
 	for (var i = 1; i <=10 ; i++) {
 		$("#registImage"+i).attr("src",fetchJSONData.imageModule.imagePathList[i]);
