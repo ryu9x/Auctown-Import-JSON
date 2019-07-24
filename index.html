@@ -134,7 +134,7 @@ function updateJSONData(){
 			var customDesc = "";
 
 
-			customDesc += $('#summernote_temp_desc').val().replace("#desc-heading",$("#txtTitle").val().replace("#desc-body",responseHTML).replace(".shipping-schedule",$("#summernote_temp_shipping_time").val());
+			customDesc += $('#summernote_temp_desc').val().replace("#desc-heading",$("#txtTitle").val()).replace("#desc-body",responseHTML).replace(".shipping-schedule",$("#summernote_temp_shipping_time").val());
 
 			customDesc += $('#summernote_temp_shipping').val().replace(".shipping-schedule",$("#summernote_temp_shipping_time").val());
 			customDesc += $('#summernote_temp_payment').val();
