@@ -4,7 +4,7 @@ var $ = window.jQuery;
 $(document).ready(function() {
 	init();
 	loadSummernote();
-alert("B");
+
 });
 
 
