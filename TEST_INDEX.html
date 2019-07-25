@@ -34,13 +34,9 @@
 
 
 </head>
-<body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
-	<div id="duynv_toolbar"> 
+<body><div id="duynv_toolbar">
 		<div class="flat-container">
-				
+
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
   JSON
@@ -176,10 +172,12 @@ function readJSONData(){
 		//Mo ta
 		if(fetchJSONData.descriptionModule.descriptionHTML == undefined || fetchJSONData.descriptionModule.descriptionHTML == ""){
 			$.get(fetchJSONData.descriptionModule.descriptionUrl,function(responseHTML){
+				var customResponseHTML = $("<div>"+responseHTML+"</div>");
+				customResponseHTML.find("img").remove();
 				var customDesc = "";
 
 
-				customDesc += $('#summernote_temp_desc').val().replace("#desc-heading",$("#txtTitle").val()).replace("#desc-body",responseHTML).replace(".shipping-schedule",$("#summernote_temp_shipping_time").val());
+				customDesc += $('#summernote_temp_desc').val().replace("#desc-heading",$("#txtTitle").val()).replace("#desc-body",customResponseHTML.html()).replace(".shipping-schedule",$("#summernote_temp_shipping_time").val());
 
 				customDesc += $('#summernote_temp_shipping').val().replace(".shipping-schedule",$("#summernote_temp_shipping_time").val());
 				customDesc += $('#summernote_temp_payment').val();
