@@ -1,17 +1,13 @@
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
-	<div id="duynv_toolbar"> 
+<div id="duynv_toolbar">
 		<div class="flat-container">
-				
+
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
   JSON
 </button>
 <!-- Modal -->
 <div class="modal fade " id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5);	">
-  <div class="modal-dialog modal-dialog-fullscreen " role="document">
+  <div class="modal-dialog modal-dialog-fullscreens " role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">JSON DATA</h5>
@@ -35,7 +31,7 @@
 					<div class="tab-pane fade show active" id="nav-tab-1" role="tabpanel" aria-labelledby="nav-1">
 						<div class="form-group">
 			  				<label for="json-data-text">Json Data</label>	
-					    <textarea class="form-control" id="json-data-text" onchange="updateJSONData()" ></textarea>
+						    <textarea class="form-control" id="json-data-text" onchange="readJSONData()" ></textarea>
 			  			</div>
 			  			<div class="form-group">
 						<label for="txtTitle">Title</label>
@@ -99,10 +95,9 @@
       
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        
-        <button type="button" class="btn btn-primary" onclick="fetchData()">
-        	Fetch Data
-    	</button>
+        <button type="button" class="btn btn-primary" onclick="updateJSONData()">Update JSON Data</button>
+        <button type="button" class="btn btn-primary" onclick="fetchData()">Fetch Data</button>
+
         
       </div>
     </div>
@@ -128,24 +123,33 @@ function init() {
 }
 
 function updateJSONData(){
+	fetchJSONData.titleModule.subject = $("#txtTitle").val();
+	fetchJSONData.descriptionModule.descriptionHTML = $("#summernote_desc").val();
+	$("#json-data-text").val(JSON.stringify(fetchJSONData));
+	alert("Da xong");
+}
+
+function readJSONData(){
 	try {
 		fetchJSONData = JSON.parse($("#json-data-text").val());
 		$("#txtTitle").val(fetchJSONData.titleModule.subject);
 		//Mo ta
-		$.get(fetchJSONData.descriptionModule.descriptionUrl,function(responseHTML){
-			var customDesc = "";
+		if(fetchJSONData.descriptionModule.descriptionHTML == undefined || fetchJSONData.descriptionModule.descriptionHTML == ""){
+			$.get(fetchJSONData.descriptionModule.descriptionUrl,function(responseHTML){
+				var customDesc = "";
 
 
-			customDesc += $('#summernote_temp_desc').val().replace("#desc-heading",$("#txtTitle").val()).replace("#desc-body",responseHTML).replace(".shipping-schedule",$("#summernote_temp_shipping_time").val());
+				customDesc += $('#summernote_temp_desc').val().replace("#desc-heading",$("#txtTitle").val()).replace("#desc-body",responseHTML).replace(".shipping-schedule",$("#summernote_temp_shipping_time").val());
 
-			customDesc += $('#summernote_temp_shipping').val().replace(".shipping-schedule",$("#summernote_temp_shipping_time").val());
-			customDesc += $('#summernote_temp_payment').val();
-			customDesc += $('#summernote_temp_note').val();
-			$("#summernote_desc").val(customDesc);
-			
+				customDesc += $('#summernote_temp_shipping').val().replace(".shipping-schedule",$("#summernote_temp_shipping_time").val());
+				customDesc += $('#summernote_temp_payment').val();
+				customDesc += $('#summernote_temp_note').val();
+				$("#summernote_desc").val(customDesc);	
+			});
 
-			
-		});
+		}else{
+			$("#summernote_desc").val(fetchJSONData.descriptionModule.descriptionHTML);	
+		}
 
 	}
 	catch(err) {
@@ -215,7 +219,7 @@ function loadSummernote(){
 		$('#summernote_temp_note').val('<table width="100%" cellspacing="0" cellpadding="10" border="0"><tbody><tr><td bgcolor="#75a749"><strong> <span style="COLOR: #FFFFFF;">備考</span> </strong></td></tr><tr><td><div><font size="3"><br></font></div><ol><li><font size="3">●　ご入金は落札後の3日以内にお願い致します。</font></li><li><font size="3">●　振込手数料は落札者様がご負担ください。</font></li><li><font size="3">●　落札後の返品、交換はお受けできません。</font></li><li><font size="3">●　故意による破損の返品、交換もお受けできません。</font></li><li><font size="3">●　商品を受け取る前に商品が紛失、受領されていない場合（40日以内にご連絡ください。ご連絡を受けた日から１週間以内にご返金致します</font>。）</li><li><font size="3">●　故意によるものではない破損の場合（3日以内にご連絡くだささい。ご返金または交換致します。）</font></li><li><font size="3">●　お使いのモニターによっては、実物との色合いが異なる場合がございます。ご了承ください。</font></li></ol></td></tr></tbody></table>');
 
 
-		 $("#summernote_desc").summernote();
+		// $("#summernote_desc").summernote();
 
 	}catch(err){console.log(err);}
  
