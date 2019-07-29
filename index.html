@@ -170,6 +170,7 @@ function readJSONData(){
 
 function setImage(){
 	$.each(fetchJSONData.imageModule.imagePathList,function(i,value){
+		i++;
 		var HTML = '<picture class="d-inline-block" style="width: 19%;margin:5px 0px" id="img_'+i+'">';
 			HTML += '<input type="checkbox" id="chk_'+i+'">';
 			HTML += '<label class="form-check-label" for="chk_'+i+'"><img src="'+value+'" class="rounded mw-100 d-inline-block" alt="Picture #'+i+'"></label>';
