@@ -208,7 +208,7 @@ function setImage(){
 	$.each(fetchJSONData.imageModule.imagePathList,function(i,value){
 		i++;
 		var HTML = '<picture class="d-inline-block" style="width: 19%;margin:5px 0px" id="img_'+i+'">';
-			HTML += '<input type="checkbox" id="chk_'+i+'">';
+			HTML += '<input type="checkbox" id="chk_'+i+'"><label for="chk_'+i+'">Image '+i+'</label>';
 			HTML += '<label class="form-check-label" for="chk_'+i+'"><img src="'+value+'" class="rounded mw-100 d-inline-block" alt="Picture #'+i+'"></label>';
 			HTML += '<input type="text" onchange="updateImage(this)" name="" class="form-control mw-100 d-inline-block" value="'+value+'">';
 			HTML +=' </picture>';
@@ -219,7 +219,7 @@ function setImage(){
 
 function getImage(){
 	var lstImageChecked = $("#lst_image input[type='checkbox']:checked");
-	for (var i = 0; i < lstImageChecked.length; i++) {
+	for (var i = 1; i <= lstImageChecked.length; i++) {
 		$("#registImage"+i).attr("src",$(lstImageChecked[i]).parent().find("input[type='text']").val());
 		$("#image"+i).val($(lstImageChecked[i]).parent().find("input[type='text']").val());
 	}

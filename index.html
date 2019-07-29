@@ -183,9 +183,10 @@ function setImage(){
 
 function getImage(){
 	var lstImageChecked = $("#lst_image input[type='checkbox']:checked");
-	for (var i = 1; i <= lstImageChecked.length; i++) {
-		$("#registImage"+i).attr("src",$(lstImageChecked[i]).parent().find("input[type='text']").val());
-		$("#image"+i).val($(lstImageChecked[i]).parent().find("input[type='text']").val());
+	for (var i = 0; i < lstImageChecked.length; i++) {
+		$("#registImage"+i+1).attr("src",$(lstImageChecked[i]).parent().find("input[type='text']").val());
+		$("#image"+i+1).val($(lstImageChecked[i]).parent().find("input[type='text']").val());
+
 	}
 }
 
