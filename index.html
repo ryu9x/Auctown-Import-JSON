@@ -182,12 +182,12 @@ function setImage(){
 }
 
 function getImage(){
-	var lstImageChecked = $("#lst_image input[type='checkbox']:checked");
-	for (var i = 0; i < lstImageChecked.length; i++) {
-		$("#registImage"+i+1).attr("src",$(lstImageChecked[i]).parent().find("input[type='text']").val());
-		$("#image"+i+1).val($(lstImageChecked[i]).parent().find("input[type='text']").val());
+		var lstImageChecked = $("#lst_image input[type='checkbox']:checked");
+		for (var i = 0; i < lstImageChecked.length; i++) {
+			$("#registImage"+(i+1)).attr("src",$(lstImageChecked[i]).parent().find("input[type='text']").val());
+			$("#image"+(i+1)).val($(lstImageChecked[i]).parent().find("input[type='text']").val());
 
-	}
+		}
 }
 
 function updateImage(e){
