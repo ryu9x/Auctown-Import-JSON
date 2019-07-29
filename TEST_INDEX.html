@@ -218,10 +218,11 @@ function setImage(){
 }
 
 function getImage(){
-	$.each($("#lst_image input[type='checkbox']:checked"),function(i,e){
-		$("#registImage"+i).attr("src",$(e).parent().find("input[type='text']").val());
-		$("#image"+i).val($(e).parent().find("input[type='text']").val());
-	})
+	var lstImageChecked = $("#lst_image input[type='checkbox']:checked");
+	for (var i = 0; i < lstImageChecked.length; i++) {
+		$("#registImage"+i).attr("src",$(lstImageChecked[i]).parent().find("input[type='text']").val());
+		$("#image"+i).val($(lstImageChecked[i]).parent().find("input[type='text']").val());
+	}
 }
 
 function updateImage(e){
