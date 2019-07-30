@@ -199,7 +199,7 @@ function readJSONData(){
 			});
 
 		}else{
-			$("#summernote_desc_temp").val(fetchJSONData.descriptionModule.descriptionHTML);	
+			$("#summernote_desc_temp").html(fetchJSONData.descriptionModule.descriptionHTML);	
 			$("#summernote_desc").val($("#summernote_desc_temp").html());	
 		}
 
