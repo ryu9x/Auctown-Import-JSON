@@ -179,16 +179,17 @@ function readJSONData(){
 
 function setImage(){
 	$("#lst_image").empty();
-	$.each(fetchJSONData.imageModule.imagePathList,function(i,value){
-		i++;
-		var HTML = '<picture class="d-inline-block" style="width: 19%;margin:5px 0px" id="img_'+i+'">';
-			HTML += '<input type="checkbox" id="chk_'+i+'" checked><label for="chk_'+i+'">Image '+i+'</label>';
-			HTML += '<label class="form-check-label" for="chk_'+i+'"><img src="'+value+'" class="rounded mw-100 d-inline-block" alt="Picture #'+i+'"></label>';
-			HTML += '<input type="text" onchange="updateImage(this)" name="" class="form-control mw-100 d-inline-block" value="'+value+'">';
+	for (var i = 0; i < 10;i++) {
+		var HTML = '<picture class="d-inline-block" style="width: 19%;margin:5px 0px" id="img_'+(i+1)+'">';
+			HTML += '<input type="checkbox" id="chk_'+(i+1)+'" checked><label for="chk_'+(i+1)+'">Image '+(i+1)+'</label>';
+			HTML += '<label class="form-check-label" for="chk_'+(i+1)+'"><img src="'+fetchJSONData.imageModule.imagePathList[i]+'" class="rounded mw-100 d-inline-block" alt="Picture #'+(i+1)+'"></label>';
+			HTML += '<input type="text" onchange="updateImage(this)" name="" class="form-control mw-100 d-inline-block" value="'+fetchJSONData.imageModule.imagePathList[i]+'">';
 			HTML +=' </picture>';
 		
 		$("#lst_image").append(HTML);
-	});
+
+
+	}
 }
 
 function getImage(){
