@@ -151,7 +151,7 @@
   </div>
 </div>
 </div>
-</div>
+
 
 <script type="text/javascript">
 	var fetchJSONData = new Object();
@@ -199,7 +199,8 @@ function readJSONData(){
 			});
 
 		}else{
-			$("#summernote_desc").val(fetchJSONData.descriptionModule.descriptionHTML);	
+			$("#summernote_desc_temp").val(fetchJSONData.descriptionModule.descriptionHTML);	
+			$("#summernote_desc").val($("#summernote_desc_temp").html());	
 		}
 
 		//Hien thi list anh
@@ -315,5 +316,6 @@ function loadSummernote(){
  
 }
 </script>
+</div>
 </body>
 </html>
