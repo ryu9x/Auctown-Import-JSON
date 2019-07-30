@@ -213,6 +213,7 @@ function readJSONData(){
 }
 
 function setImage(){
+	$("#lst_image").empty();
 	$.each(fetchJSONData.imageModule.imagePathList,function(i,value){
 		i++;
 		var HTML = '<picture class="d-inline-block" style="width: 19%;margin:5px 0px" id="img_'+i+'">';
