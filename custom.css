@@ -59,3 +59,15 @@
   max-height: 92% !important;
   padding: 0 !important;
 }
+
+#suggest-list-html ul li{
+  list-style: none;
+}
+
+#suggest-list-html ul {float: left;padding: 0px;}
+
+#suggest-list-html ul li {
+    list-style: none;
+    float: left;
+    margin: 0px 5px;
+}
