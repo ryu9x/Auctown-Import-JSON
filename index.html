@@ -199,22 +199,28 @@ function readJSONData(){
 
 function setImage(){
 	$("#lst_image").empty();
-	for (var i = 0; i < 10;i++) {
+
+	$.each(fetchJSONData.imageModule.imagePathList,function(i,val){
+
+	//for (var i = 0; i < 10;i++) {
 		var HTML = '<picture class="d-inline-block" style="width: 19%;margin:5px 0px" id="img_'+(i+1)+'">';
 			HTML += '<input type="checkbox" id="chk_'+(i+1)+'"/><label for="chk_'+(i+1)+'">Image '+(i+1)+'</label>';
-			HTML += '<label class="form-check-label" for="chk_'+(i+1)+'"><img src="'+fetchJSONData.imageModule.imagePathList[i]+'" class="rounded mw-100 d-inline-block" alt="Picture #'+(i+1)+'"></label>';
-			HTML += '<input type="text" onchange="updateImage(this)" name="" class="form-control mw-100 d-inline-block" value="'+fetchJSONData.imageModule.imagePathList[i]+'"/>';
+			HTML += '<label class="form-check-label" for="chk_'+(i+1)+'"><img src="'+val+'" class="rounded mw-100 d-inline-block" alt="Picture #'+(i+1)+'" height="90"></label>';
+			HTML += '<input type="text" onchange="updateImage(this)" name="" class="form-control mw-100 d-inline-block" value="'+val+'"/>';
 			HTML +=' </picture>';
 		
 		$("#lst_image").append(HTML);
 
 
-	}
+	//}
+
+});
+
 }
 
 function getImage(){
 		var lstImageChecked = $("#lst_image input[type='checkbox']:checked");
-		for (var i = 0; i < lstImageChecked.length; i++) {
+		for (var i = 0; i < 10; i++) {
 			$("#registImage"+(i+1)).attr("src",$(lstImageChecked[i]).parent().find("input[type='text']").val());
 			$("#image"+(i+1)).val($(lstImageChecked[i]).parent().find("input[type='text']").val());
 
