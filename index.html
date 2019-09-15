@@ -56,6 +56,7 @@
 			  			<div class="form-group">
 			  				<label for="json-data-text">Image</label>	
 			  				<a href="#" onclick="refreshImage()"> Refresh</a>
+			  				<a href="#" onclick="clearImageSelectedCheckbox()"> Uncheck All</a>
 			  				<div id="lst_image">
 			  				</div>
 			  			</div>
@@ -223,6 +224,10 @@ function refreshImage(){
 		})
 		}
 		setImage();
+}
+
+function clearImageSelectedCheckbox(){
+	$("#lst_image").find("input[type=checkbox]").attr("checked","")
 }
 
 function getImage(){
