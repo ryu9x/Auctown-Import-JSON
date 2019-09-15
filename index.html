@@ -158,12 +158,13 @@ function readJSONData(){
 		if(fetchJSONData.descriptionModule.descriptionHTML == undefined || fetchJSONData.descriptionModule.descriptionHTML == ""){
 			$.get(fetchJSONData.descriptionModule.descriptionUrl,function(responseHTML){
 				var customResponseHTML = $("<div>"+responseHTML+"</div>");
-				
+
 				//Them anh mo ta vao danh sach chon lam anh san pham
 
 				$("<div>"+responseHTML+"</div>");.find("img").each(function(){
 				if($(this).attr("height") > 500){
 					fetchJSONData.imageModule.imagePathList.push($(this).attr("src"));
+					console.log("A");
 					}
 				});
 
