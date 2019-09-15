@@ -55,6 +55,7 @@
 			  			
 			  			<div class="form-group">
 			  				<label for="json-data-text">Image</label>	
+			  				<a href="#" onclick="refreshImage()"> Refresh</a>
 			  				<div id="lst_image">
 			  				</div>
 			  			</div>
@@ -158,16 +159,6 @@ function readJSONData(){
 		if(fetchJSONData.descriptionModule.descriptionHTML == undefined || fetchJSONData.descriptionModule.descriptionHTML == ""){
 			$.get(fetchJSONData.descriptionModule.descriptionUrl,function(responseHTML){
 				var customResponseHTML = $("<div>"+responseHTML+"</div>");
-
-				//Them anh mo ta vao danh sach chon lam anh san pham
-
-				$("<div>"+responseHTML+"</div>").find("img").each(function(){
-				if($(this).attr("height") > 500){
-					fetchJSONData.imageModule.imagePathList.push($(this).attr("src"));
-					console.log("A");
-					}
-				});
-
 				//Xoa anh o mo ta san pham
 				customResponseHTML.find("img").remove();
 				var customDesc = "";
@@ -218,6 +209,20 @@ function setImage(){
 
 });
 
+}
+
+function refreshImage(){
+	if(fetchJSONData.descriptionModule.descriptionHTML == undefined || fetchJSONData.descriptionModule.descriptionHTML == ""){
+		$.get(fetchJSONData.descriptionModule.descriptionUrl,function(responseHTML){
+			//Them anh mo ta vao danh sach chon lam anh san pham
+			$("<div>"+responseHTML+"</div>").find("img").each(function(){
+			if($(this).attr("height") > 500){
+				fetchJSONData.imageModule.imagePathList.push($(this).attr("src"));
+				}
+			});
+		})
+		}
+		setImage();
 }
 
 function getImage(){
